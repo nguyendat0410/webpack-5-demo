@@ -1,0 +1,14 @@
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+$color:			blue;
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+body {
+	font-size: 14px;
+}
+.hello {
+	color: $color;
+}

@@ -1,18 +1,16 @@
 const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path");
+
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
 	entry: {
 		app: './src/index.js',
 	},
-
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name].bundle.js',
 	},
-
 	module: {
 		rules: [
 			{
@@ -23,10 +21,6 @@ module.exports = {
 			{
 				test: /\.html$/,
 				loader: 'text-loader',
-			},
-			{
-				test: /\.(sa|sc|c)ss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 			{
 				test: /\.(jpe?g|gif|png|PNG|ico|ogg)$/,
@@ -62,30 +56,12 @@ module.exports = {
 			{ test: /\.ejs$/, use: [{ loader: 'ejs-loader', options: { esModule: false }}] },
 		],
 	},
-
 	resolve: {},
-
 	plugins: [
-		new HtmlWebpackPlugin({
-			template: './index.html',
-		}),
 		new CleanWebpackPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.ProvidePlugin({
 			_: "lodash"
 		})
 	],
-
-	optimization: {},
-
-	mode: 'development',
-	devServer: {
-		historyApiFallback: true,
-		contentBase: '/',
-		open: true,
-		compress: true,
-		hot: true,
-		port: 9999,
-		inline: true,
-	},
 };
