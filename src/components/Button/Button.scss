@@ -1,3 +1,4 @@
+$primary: green;
 .btn {
 	padding: 5px;
 	display: inline-block;
@@ -20,8 +21,8 @@
 }
 .primary {
 	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff;
+	background-color: $primary;
+	border-color: $primary;
 }
 .error {
 	background-color: red;

@@ -9,11 +9,10 @@
 
 
 import React from 'react';
-import classNames from 'classnames/bind';
-
+import classnames from 'classnames/bind';
 import styles from './Button.scss';
 
-const cx = classNames.bind(styles);
+const cx = classnames.bind(styles);
 
 export default props => {
 	const { onClick, children, isError } = props;

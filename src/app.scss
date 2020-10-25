@@ -1,6 +1,6 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
-$color-text: red;
+$red: red;
 $white: white;
 
 * {
@@ -13,6 +13,8 @@ body {
 .wrapper {
 	padding: 10px;
 }
-.hello {
-	color: $color-text;
+.red {
+	color: $red;
 }
+.green { color: green; }
+.no-name { color: blue; }

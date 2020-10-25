@@ -26,12 +26,14 @@ export default class App extends Component {
 	}
 	onClickBtn = () => this.setState({ error: !this.state.error });
 	render() {
+		const { error } = this.state;
 		return (
 			<div className={cx('wrapper')}>
-				<h1 className={cx('hello')}>React JS version {React.version}</h1>
+				<h1 className={cx({ 'red': error, 'green': !error })}>React JS version {React.version}</h1>
 				<Button isError={this.state.error} onClick={this.onClickBtn}>
-					Overwrite
+					Change Color
 				</Button>
+				<br />
 			</div>
 		);
 	}
