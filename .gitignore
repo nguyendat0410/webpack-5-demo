@@ -1,0 +1,20 @@
+node_modules/
+dist/*
+/dist/
+/yarn-error.log
+build.html
+/.settings/
+.settings/*
+/.vscode/
+dev/*
+/dev/
+devserver.js
+/build.html
+.project
+package-lock.json
+yarn-error.log
+.idea/
+<<<<<<< HEAD
+/.idea/*
+yarn.log
+yarn.lock
