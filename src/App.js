@@ -9,13 +9,30 @@
 
 
 import React, { Component } from 'react';
+import classNames from 'classnames/bind';
 
-import './app.scss';
+import Button from './components/Button';
+
+import styles from './app.scss';
+
+const cx = classNames.bind(styles);
 
 export default class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			error: false,
+		};
+	}
+	onClickBtn = () => this.setState({ error: !this.state.error });
 	render() {
 		return (
-			<h1 className="hello">App Hello</h1>
+			<div className={cx('wrapper')}>
+				<h1 className={cx('hello')}>React JS version {React.version}</h1>
+				<Button isError={this.state.error} onClick={this.onClickBtn}>
+					Overwrite
+				</Button>
+			</div>
 		);
 	}
 }
