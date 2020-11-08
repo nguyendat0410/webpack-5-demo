@@ -10,31 +10,37 @@
 
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
-
-import Button from './components/Button';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import styles from './app.scss';
 
 const cx = classNames.bind(styles);
 
-export default class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			error: false,
-		};
-	}
-	onClickBtn = () => this.setState({ error: !this.state.error });
-	render() {
-		const { error } = this.state;
-		return (
-			<div className={cx('wrapper')}>
-				<h1 className={cx({ 'red': error, 'green': !error })}>React JS version {React.version}</h1>
-				<Button isError={this.state.error} onClick={this.onClickBtn}>
-					Change Color
-				</Button>
-				<br />
-			</div>
-		);
-	}
+import routes from './pages/routes';
+
+function Main() {
+	return (
+		<div className={cx('wrapper')}>
+			<Router>
+				<Link to="/" className={cx('menu')}>Home</Link> |&nbsp;
+				<Link to="/product" className={cx('menu')}>Product</Link> |&nbsp;
+				<Link to="/profile" className={cx('menu')}>Profile</Link> |&nbsp;
+				<br /><br />
+				<Routes>
+					{
+						routes.map(({ Element, path, ...rest }) => (
+							<Route
+								key={path}
+								path={path}
+								element={<Element />}
+								{...rest}
+							/>
+						))
+					}
+				</Routes>
+			</Router>
+		</div>
+	);
 }
+
+export default Main;

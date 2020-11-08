@@ -48,9 +48,12 @@
 		"webpackbar": "^5.0.0-3"
 	},
 	"dependencies": {
+		"@loadable/component": "^5.14.1",
 		"classnames": "^2.2.6",
+		"history": "^5.0.0",
 		"react": "^17.0.1",
-		"react-dom": "^17.0.1"
+		"react-dom": "^17.0.1",
+		"react-router-dom": "^6.0.0-beta.0"
 	},
 	"scripts": {
 		"dev": "webpack serve --mode development -c webpack.dev.js",

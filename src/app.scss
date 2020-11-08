@@ -19,5 +19,22 @@ body {
 .red {
 	color: $red;
 }
-.green { color: green; }
-.no-name { color: blue; }
+.green {
+	color: green;
+}
+.no-name {
+	color: blue;
+}
+.menu {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px;
+	color: hotpink;
+	padding-bottom: 20px;
+}
+.menu:active {
+	color: red;
+}
+.menu:hover {
+	color: green;
+}

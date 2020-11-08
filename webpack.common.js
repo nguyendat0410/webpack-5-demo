@@ -61,7 +61,8 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.ProvidePlugin({
-			_: "lodash"
+			_: "lodash",
+			React: 'react',
 		})
 	],
 };

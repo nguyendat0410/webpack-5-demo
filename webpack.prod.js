@@ -52,7 +52,7 @@ module.exports = merge(common, {
 					}
 				}]
 			},
-			{ 
+			{
 				test: /\.svg/,
 				use: [{
 					loader: 'url-loader',
@@ -122,6 +122,9 @@ module.exports = merge(common, {
 			}),
 		],
 		splitChunks: {
+			chunks: 'all',
+			minSize: 0,
+			maxInitialRequests: Infinity,
 			cacheGroups: {
 				default: false,
 				vendors: false,
@@ -138,7 +141,18 @@ module.exports = merge(common, {
 					test: /\.css$/,
 					chunks: 'all',
 					enforce: true
-				}
+				},
+				// vendor: {
+				// 	test: /[\\/]node_modules[\\/]/,
+				// 	name(module) {
+				// 		// get the name. E.g. node_modules/packageName/not/this/part.js
+				// 		// or node_modules/packageName
+				// 		const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+				// 		// npm package names are URL-safe, but some servers don't like @ symbols
+				// 		return `npm.${packageName.replace('@', '')}`;
+				// 	},
+				// },
 			}
 		}
 	},
