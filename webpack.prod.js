@@ -2,7 +2,8 @@ const webpack = require('webpack');
 const path = require("path");
 const merge = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -77,7 +78,7 @@ module.exports = merge(common, {
 		// new BundleAnalyzerPlugin(),
 		new MiniCssExtractPlugin({ filename: 'styles.[chunkhash].css' }), //Build ra file bundle css
 		new ManifestPlugin(),
-		// new WebpackBar({ name: 'Webpack Production Running ', color: '#10519f' }),
+		new WebpackBar({ name: 'Webpack Production Running ', color: '#10519f' }),
 	],
 	optimization: {
 		minimize: true,
@@ -104,13 +105,21 @@ module.exports = merge(common, {
 				},
 				extractComments: false
 			}),
-			new OptimizeCSSAssetsPlugin({
-				cssProcessor: require('cssnano'),
-				cssProcessorOptions: {
-					preset: ['default', { discardComments: { removeAll: true } }],
+			// new OptimizeCSSAssetsPlugin({
+			// 	cssProcessor: require('cssnano'),
+			// 	cssProcessorOptions: {
+			// 		preset: ['default', { discardComments: { removeAll: true } }],
+			// 	},
+			// 	canPrint: true
+			// }), //Minify bundle css
+			new CssMinimizerPlugin({
+				minimizerOptions: {
+					preset: [
+						'default',
+						{ discardComments: { removeAll: true } }
+					],
 				},
-				canPrint: true
-			}) //Minify bundle css
+			}),
 		],
 		splitChunks: {
 			cacheGroups: {
